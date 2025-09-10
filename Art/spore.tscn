@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddxg7iearh8w5"]
+
+[ext_resource type="Script" uid="uid://xjp33ryqnqys" path="res://Spore.gd" id="1_eqxr8"]
+[ext_resource type="Texture2D" uid="uid://c3eijpw4hrk28" path="res://Art/spore.png" id="1_timjp"]
+
+[node name="Spore" type="Node2D"]
+script = ExtResource("1_eqxr8")
+direction = Vector2(2, 1)
+speed = 2.0
+damping_range = Vector2(0.1, 0.75)
+gravityAccel_range = Vector2(0.1, 1.5)
+lowest_y = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_timjp")
