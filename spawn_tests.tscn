@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bbmv1hdsodb75" path="res://SpawnTester.gd" id="1_v42ya"]
 [ext_resource type="Script" uid="uid://clr2h7yixa53g" path="res://PoolManager.gd" id="2_cbc15"]
-[ext_resource type="PackedScene" uid="uid://ddxg7iearh8w5" path="res://Art/spore.tscn" id="3_cbc15"]
+[ext_resource type="Script" uid="uid://df532qusgts8b" path="res://MushroomSpawner.gd" id="5_rl8ki"]
 
 [node name="SpawnTests" type="Node2D"]
 script = ExtResource("1_v42ya")
-spawnTest = ExtResource("3_cbc15")
+spawnTest = &"Spore"
 
 [node name="PoolManager" type="Node2D" parent="."]
 script = ExtResource("2_cbc15")
-poolInstances = Array[PackedScene]([ExtResource("3_cbc15")])
 poolStartSize = 10
+
+[node name="MushroomSpawner" type="Node2D" parent="."]
+script = ExtResource("5_rl8ki")

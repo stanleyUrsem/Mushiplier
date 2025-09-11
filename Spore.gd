@@ -9,13 +9,19 @@ var amplitude : float
 @export var damping_range : Vector2
 @export var gravityAccel_range : Vector2
 @export var lowest_y : float
+@export var mushroom_chance : float
 
 var damping
 var gravityAccel
 var fadespeed 
+var poolManager 
+var mushroomSpawner 
+
 func _ready() -> void:
 	rng = RandomNumberGenerator.new()
 	time = rng.randf()
+	poolManager = get_tree().current_scene.get_node("PoolManager")
+	mushroomSpawner = get_tree().current_scene.get_node("MushroomSpawner")
 	
 func setup():
 	time = rng.randf()
@@ -51,3 +57,9 @@ func fade_out(delta):
 	velocity.x = sin(time * lerp(fadespeed,50.0,delta * 5)) * .2
 	velocity.y = delta * .5
 	position += velocity
+	
+	if position.y > get_window().size.y + lowest_y:
+		if rng.randf_range(0,100) > mushroom_chance:
+			SignalHub.spawn.emit("Mushroom",position,null)
+		SignalHub.despawn.emit(self,"Spore")
+		

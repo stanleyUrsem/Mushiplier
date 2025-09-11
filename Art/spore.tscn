@@ -10,6 +10,7 @@ speed = 2.0
 damping_range = Vector2(0.1, 0.75)
 gravityAccel_range = Vector2(0.1, 1.5)
 lowest_y = 2.0
+mushroom_chance = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

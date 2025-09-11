@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Poolables" load_steps=4 format=3 uid="uid://tckkcfc57hmk"]
+
+[ext_resource type="Script" uid="uid://dhi82gdp7mpcs" path="res://Poolables.gd" id="1_etlxr"]
+[ext_resource type="PackedScene" uid="uid://ddxg7iearh8w5" path="res://Art/spore.tscn" id="1_htfdg"]
+[ext_resource type="PackedScene" uid="uid://ci0nw4o2oml7m" path="res://Art/regular_mushroom.tscn" id="2_7h7nh"]
+
+[resource]
+script = ExtResource("1_etlxr")
+poolables = Dictionary[StringName, PackedScene]({
+&"Mushroom": ExtResource("2_7h7nh"),
+&"Spore": ExtResource("1_htfdg")
+})
+metadata/_custom_type_script = "uid://dhi82gdp7mpcs"
