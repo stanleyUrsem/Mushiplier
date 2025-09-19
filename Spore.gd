@@ -9,7 +9,7 @@ var amplitude : float
 @export var damping_range : Vector2
 @export var gravityAccel_range : Vector2
 @export var lowest_y : float
-@export var mushroom_chance : float
+@export var mushroom_chance : int
 
 var damping
 var gravityAccel
@@ -30,6 +30,8 @@ func setup():
 	damping = rng.randf_range(damping_range.x,damping_range.y)
 	gravityAccel = rng.randf_range(gravityAccel_range.x,gravityAccel_range.y)
 	fadespeed = 10.0
+	skew = rng.randf_range(-90,90)
+	modulate = Color.from_hsv(rng.randf_range(0.25,0.5),0.25,rng.randf_range(0.5,1.0))
 
 func _process(delta: float) -> void:
 	if(visible == false):
@@ -37,7 +39,7 @@ func _process(delta: float) -> void:
 		
 	time += delta * speed
 	
-	if position.y > get_window().size.y - lowest_y:
+	if position.y >  - lowest_y:
 		fade_out(delta)
 		return
 	
@@ -49,7 +51,7 @@ func sway(delta):
 	velocity.x = cos(time) * amplitude * direction.x
 	 # falling velocity gradually increasing
 	velocity.y = lerp(velocity.y, 1.0, delta * gravityAccel) * direction.y
-	
+	modulate.a = amplitude
 	position += velocity
 	rotation = lerp_angle(rotation,velocity.angle(),delta * speed)
 
@@ -58,8 +60,9 @@ func fade_out(delta):
 	velocity.y = delta * .5
 	position += velocity
 	
-	if position.y > get_window().size.y + lowest_y:
-		if rng.randf_range(0,100) > mushroom_chance:
+	if position.y > lowest_y:
+		var roll = rng.randi_range(0,100)
+		if roll < mushroom_chance:
 			SignalHub.spawn.emit("Mushroom",position,null)
 		SignalHub.despawn.emit(self,"Spore")
 		

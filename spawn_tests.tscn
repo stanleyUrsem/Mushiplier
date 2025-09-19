@@ -14,3 +14,7 @@ poolStartSize = 10
 
 [node name="MushroomSpawner" type="Node2D" parent="."]
 script = ExtResource("5_rl8ki")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -162)
+zoom = Vector2(2, 2)
