@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://4tci3fwb3pk0"]
+
+[ext_resource type="PackedScene" uid="uid://ci0nw4o2oml7m" path="res://Art/regular_mushroom.tscn" id="1_73bwq"]
+[ext_resource type="Script" uid="uid://b0hlx7soii8nb" path="res://Mechanics/OnClickManager.gd" id="1_c25nn"]
+[ext_resource type="Script" uid="uid://cldwlybqyw285" path="res://Mechanics/SizeIncreaser.gd" id="1_u4yff"]
+
+[node name="IncreaseOnClick" type="Node2D"]
+script = ExtResource("1_c25nn")
+
+[node name="SizeIncreaser" type="Node2D" parent="."]
+script = ExtResource("1_u4yff")
+size_increase = -1
+
+[node name="RegularMushroom" parent="SizeIncreaser" instance=ExtResource("1_73bwq")]
+offset_sprite = Vector2(0, 0)

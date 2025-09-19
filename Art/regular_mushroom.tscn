@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ci0nw4o2oml7m"]
+[gd_scene load_steps=3 format=3 uid="uid://ci0nw4o2oml7m"]
 
 [ext_resource type="Texture2D" uid="uid://g81ehxjr3lsq" path="res://Art/regular_mushcap.png" id="1_5o136"]
+[ext_resource type="Script" uid="uid://c70jsvt01uag6" path="res://StraightSizable.gd" id="1_fxh34"]
 
 [node name="RegularMushroom" type="Node2D"]
+script = ExtResource("1_fxh34")
+offset_sprite = Vector2(0, -4)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 
-[node name="Mushcap" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -4)
 texture = ExtResource("1_5o136")
